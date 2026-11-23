@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Local-Chatbot</title>
+    <link rel="stylesheet" href="darkmodd.css" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+</head>
+
+<body>
+
+
+    <div class="chat-wrapper">
+        <!-- Top Header -->
+        <header class="chat-header">
+            <div class="header-content">
+                <div style="display: flex; gap: 10px;">
+                    <div class="bot-avatar">AI</div>
+                    <div class="header-info">
+                        <h2>My Chatbot</h2>
+                        <span><i class="status-dot"></i> Online</span>
+                    </div>
+                </div>
+                <!-- <div class="head">
+                    <h1>Welcome back</h1>
+                </div> -->
+            </div>
+        </header>
+
+        <!-- Main Chat Area -->
+        <main class="chat-messages">
+            <div class="title">
+                <h1 id="welcome_title">How can I help you?</h1>
+            </div>
+            <div class="messages-container">
+
+            </div>
+        </main>
+
+        <!-- Fixed Bottom Input Box -->
+        <footer class="chat-input-area">
+            <form class="input-form" onsubmit="return false;">
+                <input type="text" placeholder="Type a message..." required />
+                <button id="button" type="submit">Send</button>
+            </form>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
