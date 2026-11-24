@@ -9,10 +9,8 @@ function getSessionId() {
 }
 const sessionId = getSessionId();
 
-// Local par localhost, deploy ke baad apna server URL
-const API_URL = ['localhost', '127.0.0.1'].includes(location.hostname)
-    ? 'http://localhost:3000'
-    : 'https://YOUR-SERVER-URL.onrender.com';
+// Live Server (port 5500) par localhost:3000, deploy par same domain
+const API_URL = location.port === '5500' ? 'http://localhost:3000' : '';
 
 // 1. HTML Elements ko select karna
 const chatMessages = document.querySelector('.chat-messages');
@@ -79,7 +77,7 @@ inputForm.addEventListener('submit', async (e) => {
 
     try {
         // Apne Express backend ko request bhejein
-        const response = await fetch('http://localhost:3000/chat', {
+        const response = await fetch(`${API_URL}/chat`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

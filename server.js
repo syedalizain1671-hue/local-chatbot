@@ -1,3 +1,8 @@
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
@@ -27,10 +32,11 @@ const MODELS = [
 const app = express();
 app.use(cors({ origin: ALLOWED_ORIGIN }));
 app.use(express.json({ limit: '10kb' }));
+app.use(express.static(path.join(__dirname, 'public')));
 
 if (!process.env.GEMINI_API_KEY) {
     console.error('GEMINI_API_KEY nahi mili. .env file ya hosting ke Environment Variables check karein.');
-    process.exit(1);
+    // process.exit(1);
 }
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
@@ -77,9 +83,9 @@ function isValidSessionId(id) {
 }
 
 // ---------- Routes ----------
-app.get('/', (req, res) => {
-    res.send('Chatbot server is running.');
-});
+// app.get('/', (req, res) => {
+//     res.send('Chatbot server is running.');
+// });
 
 // Naya chat shuru karne ke liye (history saaf)
 app.post('/reset', (req, res) => {
